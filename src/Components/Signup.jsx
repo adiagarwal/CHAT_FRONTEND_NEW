@@ -2,7 +2,7 @@ import {Box , Button, Card , CardContent , Stack, TextField, Typography } from "
 import React , {useState} from "react";
 import {toast } from "react-toastify";
 import {useMutation} from "@apollo/client";
-import {client} from "../Graphql/apolloClient";
+import {client , authclient} from "../Graphql/apolloClient";
 import {SIGNUP} from "../Graphql/mutations";
 import {useNavigate} from "react-router-dom";
 // import {TOASTIFY_THEME} from "../Constants/constant"
@@ -11,7 +11,7 @@ const Signup = () => {
     let navigate = useNavigate(null)
 
     const [formData , setformData] = useState(input)
-    const [signUp , {data : signUpUser, error}] = useMutation(SIGNUP,{client : client})
+    const [signUp , {data : signUpUser, error}] = useMutation(SIGNUP,{client : authclient})
 
     const handleChange = (event) =>{
         setformData({...formData , [event.target.name] : event.target.value})

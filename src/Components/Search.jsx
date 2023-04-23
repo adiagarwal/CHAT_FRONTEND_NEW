@@ -20,7 +20,7 @@ const Search = () => {
    
   return (
     <div >
-      <Autocomplete sx={{marginTop:"30px"}}  options={usersArray}  getOptionLabel={(option) => option._id} renderOption={(props , option ,state) => <User user={option} bg={false}/>} renderInput={(params) => <TextField variant='standard'  color='warning' placeholder='Search Your Friends ...' {...params}/>} freeSolo/>
+      <Autocomplete  sx={{marginTop:"30px"}}  options={usersArray}  getOptionLabel={(option) => option._id} renderOption={(props , option ,state) => <User user={option} bg={false}/>} renderInput={(params) => <TextField variant='standard'  color='warning' placeholder='Search Your Friends ...' {...params}/>} freeSolo/>
     </div>
   );
 }

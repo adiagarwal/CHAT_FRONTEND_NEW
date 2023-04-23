@@ -20,7 +20,7 @@ const Message = ({messages}) => {
         messages.map((message) =>{
           return (
             <List key={message._id} disablePadding>
-                <ListItem  sx={user._id !== message.sender ? {background:"#F8F7F7" ,marginBottom : "100px", inlineSize:"45%" , overflowWrap:"break-word" , borderRadius:"20px"} : {background:"#ff885d" , marginBottom:"100px" , inlineSize:"45%" , overflowWrap:"break-word" , borderRadius:"20px" , marginLeft:"auto" , color:"white"}}>
+                <ListItem  sx={user._id !== message.sender ? {background:"#F8F9F9" ,marginBottom : "100px", inlineSize:"45%" , overflowWrap:"break-word" , borderRadius:"20px 20px 0px 30px"} : {background:"#ff885d" , marginBottom:"100px" , inlineSize:"45%" , overflowWrap:"break-word" , borderRadius:"20px 20px 0px 30px" , marginLeft:"auto" , color:"white"}}>
                   <ListItemAvatar>
                     <Avatar sizes={"large"}></Avatar>
                   </ListItemAvatar>

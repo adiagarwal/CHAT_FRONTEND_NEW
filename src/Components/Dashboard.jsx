@@ -9,7 +9,7 @@ import { display } from '@mui/system';
 const Dashboard = () => {
   return (
     <div>
-      <Grid component={Paper} container spacing={2} sx={{width:"100%", marginTop:"10px",  height:"90vh"}}>
+      <Grid component={Paper} container spacing={2} sx={{width:"100%", marginTop:"10px",  height:"90vh"}} variant='outlined' square>
         <Grid item md={3} sx={{display : "flex" ,flexDirection : "row"}}>
         <Divider variant='middle'/>
           <Sidenav/>

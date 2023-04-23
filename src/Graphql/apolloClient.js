@@ -8,19 +8,29 @@ import jwt_decode from "jwt-decode";
  const backendLink = createHttpLink({
     uri : `${REACT_APP_CHAT_BACKEND_URL}`,
     headers:{
-        authorization : localStorage.getItem('accessToken')
+      authorization : localStorage.getItem('accessToken')
     }
 })
 
-
-
-const authLink = setContext(async() =>{
-  let token = localStorage.getItem('accessToken')
-  let decode = jwt_decode(token)
-  console.log(decode)
+const authLink = createHttpLink({
+  uri : "http://localhost:5000/graphql",
+  headers:{
+    authorization : localStorage.getItem('accessToken')
+  }
 })
 
-const mainLink = backendLink.concat(authLink)
+// const bridgeLink = setContext(({_ , headers}) =>{
+//   let token = localStorage.getItem('accessToken')
+//   console.log(token)
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token 
+//     }
+//   }
+// })
+
+// const mainLink = bridgeLink.concat(backendLink)
 
 const splitLink = split(
     ({ query }) => {
@@ -31,7 +41,7 @@ const splitLink = split(
       );
     },
     wsLink,
-    mainLink,
+    backendLink,
   );
 
 
@@ -40,7 +50,7 @@ export const client = new ApolloClient({
     cache : new InMemoryCache()
 })
 
-export const onboardingClient = new ApolloClient({
-  uri : `${REACT_APP_CHAT_BACKEND_URL}`,
+export const authclient = new ApolloClient({
+  link : authLink,
   cache : new InMemoryCache()
 })

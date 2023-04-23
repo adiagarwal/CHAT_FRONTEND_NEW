@@ -1,7 +1,7 @@
 import {Box , Button, Card , CardContent , Stack, TextField, Typography} from "@mui/material";
 import React , {useState} from "react";
 import {useMutation} from "@apollo/client";
-import {client} from "../Graphql/apolloClient";
+import {client , authclient} from "../Graphql/apolloClient";
 import {SIGNIN} from "../Graphql/mutations";
 import {toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const Signin = () => {
     
     const [formData , setformData] = useState(input)
 
-    const [signIn , {data : loginUser , error}] = useMutation(SIGNIN,{client : client})
+    const [signIn , {data : loginUser , error}] = useMutation(SIGNIN,{client : authclient})
 
     const handleChange = (event) =>{
         setformData({...formData , [event.target.name] : event.target.value})
